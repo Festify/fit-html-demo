@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^1.0.17",
+    "fit-html": "../fit-html",
+    "lit-html": "^0.7.1",
+    "redux": "^3.7.2"
+  }
+}
