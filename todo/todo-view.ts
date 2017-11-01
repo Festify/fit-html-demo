@@ -1,7 +1,6 @@
 import { connect, withExtended, withProps } from 'fit-html';
 import { html } from 'lit-html/lib/lit-extended';
-import { Dispatch } from "redux";
-import '@polymer/polymer/lib/elements/dom-if';
+import { Dispatch } from 'redux';
 
 import { completeTodo, removeTodo } from './actions';
 import { Importance, State, TodoItem } from './reducer';

@@ -1,6 +1,7 @@
 import { Action as Ac } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+
 import { State, TodoItem } from './reducer';
-import { ThunkAction } from "redux-thunk";
 
 export interface Action extends Ac {
     payload?: any;

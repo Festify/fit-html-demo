@@ -1,6 +1,7 @@
 import { createProvider } from 'fit-html';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
+
 import { Action } from './actions';
 
 export const enum Importance {
