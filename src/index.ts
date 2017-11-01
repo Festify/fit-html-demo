@@ -1,55 +1,8 @@
-import { connect, createProvider } from 'fit-html';
+import { connect } from 'fit-html';
 import { html } from 'lit-html/lib/lit-extended';
-import { Action as Ac, createStore, Dispatch } from 'redux';
+import { Dispatch } from 'redux';
 
-interface Action extends Ac {
-    payload: any;
-}
-
-type ValueTypes = 'm' | 'cm' | 'km';
-
-interface State {
-    inputValue: string;
-    inputType: ValueTypes;
-    outputType: ValueTypes;
-}
-
-const conversion = {
-    cm: 1,
-    m: 100,
-    km: 100000
-};
-
-function reducer(
-    state: State = {
-        inputValue: '',
-        inputType: 'cm',
-        outputType: 'm'
-    },
-    action: Action
-): State {
-    switch (action.type) {
-        case 'CHANGE_INPUT_VALUE':
-            return {
-                ...state,
-                inputValue: (parseFloat(action.payload) / conversion[state.inputType]) + ''
-            };
-        case 'CHANGE_INPUT_TYPE':
-            return {
-                ...state,
-                inputType: action.payload
-            };
-        case 'CHANGE_OUTPUT_TYPE':
-            return {
-                ...state,
-                outputType: action.payload
-            };
-        default:
-            return state;
-    }
-}
-
-const store = createStore(reducer);
+import { conversion, State, ValueTypes } from './reducer';
 
 interface ViewProps {
     inputValue: string;
@@ -64,9 +17,9 @@ interface ViewProps {
 
 const mapStateToProps = (state: State) => {
     return {
-        inputValue: state.inputValue,
+        inputValue: (state.inputValue / conversion[state.inputType]).toString(),
         inputType: state.inputType,
-        outputValue: parseFloat(state.inputValue) * conversion[state.outputType] + '',
+        outputValue: (state.inputValue / conversion[state.outputType]).toString(),
         outputType: state.outputType
     };
 };
@@ -75,6 +28,7 @@ const mapDispatchToProps = (dispatch: Dispatch<State>) => ({
     inputTypeChanged: (ty: string) => dispatch({ type: 'CHANGE_INPUT_TYPE', payload: ty }),
     outputTypeChanged: (ty: string) => dispatch({ type: 'CHANGE_OUTPUT_TYPE', payload: ty })
 });
+
 const renderer = (props: ViewProps) => html`
     <style>
         :host {
@@ -88,14 +42,18 @@ const renderer = (props: ViewProps) => html`
         }
     </style>
 
-    <input type="number" on-change=${(ev: Event) => props.inputValueChanged((ev.target as HTMLInputElement).value)}>
-    <select on-change=${(ev: Event) => props.inputTypeChanged((ev.target as HTMLSelectElement).value as ValueTypes)}>
+    <input type="number" 
+           on-change=${(ev: Event) => props.inputValueChanged((ev.target as HTMLInputElement).value)}
+           value=${props.inputValue}>
+    <select on-change=${(ev: Event) => props.inputTypeChanged((ev.target as HTMLSelectElement).value as ValueTypes)}
+            value=${props.inputType}>
         <option value="cm">cm</option>
         <option value="m">m</option>
         <option value="km">km</option>
     </select>
     
-    <select on-change=${(ev: Event) => props.outputTypeChanged((ev.target as HTMLSelectElement).value as ValueTypes)}>
+    <select on-change=${(ev: Event) => props.outputTypeChanged((ev.target as HTMLSelectElement).value as ValueTypes)}
+            value=${props.outputType}>
         <option value="cm">cm</option>
         <option value="m">m</option>
         <option value="km">km</option>

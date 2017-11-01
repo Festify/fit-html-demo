@@ -1,8 +1,21 @@
 {
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c --watch"
+  },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^1.0.17",
     "fit-html": "../fit-html",
     "lit-html": "^0.7.1",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "rollup-plugin-babel-minify": "^3.1.2"
+  },
+  "devDependencies": {
+    "rollup": "^0.50.0",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-node-globals": "^1.1.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-typescript2": "^0.8.0",
+    "typescript": "^2.6.1"
   }
 }
