@@ -1,4 +1,4 @@
-import { connect } from 'fit-html';
+import { connect, withExtended } from 'fit-html';
 import { html } from 'lit-html/lib/lit-extended';
 import { Dispatch } from 'redux';
 
@@ -67,4 +67,4 @@ const View = connect(
     renderer as any
 );
 
-customElements.define('main-view', View as any);
+customElements.define('main-view', withExtended(View) as any);
