@@ -1,3 +1,4 @@
+import minify from 'rollup-plugin-babel-minify';
 import cjs from 'rollup-plugin-commonjs';
 import copy from 'rollup-plugin-copy';
 import nodeGlobals from 'rollup-plugin-node-globals';
@@ -22,7 +23,8 @@ function createConfig(folder) {
             copy({
                 [`${folder}/index.html`]: `dist/${folder}/index.html`,
                 'node_modules/@webcomponents': 'dist/node_modules/@webcomponents'
-            })
+            }),
+            minify({ comments: false })
         ]
     };
 }
