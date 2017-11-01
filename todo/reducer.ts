@@ -76,4 +76,4 @@ const Provider = createProvider(createStore(
     reducer,
     applyMiddleware(thunk)
 ));
-customElements.define('redux-provider', Provider as any);
+customElements.define('redux-provider', Provider);

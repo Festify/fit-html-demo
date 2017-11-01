@@ -30,12 +30,9 @@ function getIcon(importance: Importance): string {
 }
 
 const mapStateToProps = (state: State, ownProps: OwnProps) => {
-    const todo = state.todos.find(td => td.id === ownProps.todoId) || {
-        importance: Importance.Normal
-    };
-
+    const todo = state.todos.find(td => td.id === ownProps.todoId);
     return {
-        severityIcon: getIcon(todo.importance),
+        severityIcon: getIcon((todo || { importance: Importance.Normal }).importance),
         todo: todo
     };
 };
@@ -50,7 +47,7 @@ const renderer = (props: TodoViewProps) => html`
         }
     </style>
 
-    <span>${props.todo.text}</span>
+    <span>${(props.todo || { text: '' }).text}</span>
     <span>${props.severityIcon}</span>
     
     <button on-click="${() => props.completeTodo()}">Complete</button>
@@ -59,8 +56,8 @@ const renderer = (props: TodoViewProps) => html`
 
 const Todo = withProps(withExtended(connect(
     mapStateToProps,
-    mapDispatchToProps as any,
-    renderer as any
+    mapDispatchToProps,
+    renderer
 )), {
     todoId: String
 });

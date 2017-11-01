@@ -49,5 +49,5 @@ export function reducer(
     }
 }
 
-const Provider = createProvider(createStore(reducer));
-customElements.define('redux-provider', Provider as any);
+const Provider = createProvider(createStore(reducer!));
+customElements.define('redux-provider', Provider);

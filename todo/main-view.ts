@@ -80,10 +80,10 @@ const renderer = (props: MainViewProps) => html`
     </ul>
 `;
 
-const MainView = connect(
+const MainView = withExtended(connect(
     mapStateToProps,
-    mapDispatchToProps as any,
-    renderer as any
-);
+    mapDispatchToProps,
+    renderer
+));
 
-customElements.define('main-view', withExtended(MainView) as any);
+customElements.define('main-view', MainView);

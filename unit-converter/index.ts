@@ -63,8 +63,8 @@ const renderer = (props: ViewProps) => html`
 
 const View = connect(
     mapStateToProps,
-    mapDispatchToProps as any,
-    renderer as any
+    mapDispatchToProps,
+    renderer
 );
 
-customElements.define('main-view', withExtended(View) as any);
+customElements.define('main-view', withExtended(View));
