@@ -28,5 +28,6 @@ function createConfig(folder) {
 }
 
 export default [
+    'todo',
     'unit-converter'
 ].map(createConfig);

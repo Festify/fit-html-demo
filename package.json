@@ -10,10 +10,11 @@
     "fit-html": "../fit-html",
     "lit-html": "^0.7.1",
     "redux": "^3.7.2",
-    "rollup-plugin-babel-minify": "^3.1.2"
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "rollup": "^0.50.0",
+    "rollup-plugin-babel-minify": "^3.1.2",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-copy": "^0.2.3",
     "rollup-plugin-node-globals": "^1.1.0",
