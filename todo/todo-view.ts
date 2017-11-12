@@ -7,8 +7,9 @@ import { Importance, State, TodoItem } from './reducer';
 
 interface TodoViewProps {
     severityIcon: string;
-    todo: TodoItem;
-
+    todo?: TodoItem;
+}
+interface TodoViewDispatch {
     completeTodo: () => void;
     removeTodo: () => void;
 }
@@ -29,18 +30,18 @@ function getIcon(importance: Importance): string {
     }
 }
 
-const mapStateToProps = (state: State, ownProps: OwnProps) => {
+const mapStateToProps = (state: State, ownProps: OwnProps): TodoViewProps => {
     const todo = state.todos.find(td => td.id === ownProps.todoId);
     return {
         severityIcon: getIcon((todo || { importance: Importance.Normal }).importance),
         todo: todo
     };
 };
-const mapDispatchToProps = (dispatch: Dispatch<State>, ownProps: OwnProps) => ({
+const mapDispatchToProps = (dispatch: Dispatch<State>, ownProps: OwnProps): TodoViewDispatch => ({
     completeTodo: () => dispatch(completeTodo(ownProps.todoId)),
     removeTodo: () => dispatch(removeTodo(ownProps.todoId))
 });
-const renderer = (props: TodoViewProps) => html`
+const renderer = (props: TodoViewProps & TodoViewDispatch) => html`
     <style>
         span {
             margin-right: 16px;
