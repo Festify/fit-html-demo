@@ -1,6 +1,9 @@
 {
-  "name": "unit-converter",
+  "name": "fit-html-demo",
+  "private": true,
   "version": "0.1.0",
+  "repository": "https://github.com/Festify/fit-html-demo",
+  "bugs": "https://github.com/Festify/fit-html-demo/issues",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c --watch"
