@@ -15,14 +15,12 @@ interface ViewProps {
     outputTypeChanged: (val: ValueTypes) => void;
 }
 
-const mapStateToProps = (state: State) => {
-    return {
-        inputValue: (state.inputValue / conversion[state.inputType]).toString(),
-        inputType: state.inputType,
-        outputValue: (state.inputValue / conversion[state.outputType]).toString(),
-        outputType: state.outputType
-    };
-};
+const mapStateToProps = (state: State) => ({
+    inputValue: (state.inputValue / conversion[state.inputType]).toString(),
+    inputType: state.inputType,
+    outputValue: (state.inputValue / conversion[state.outputType]).toString(),
+    outputType: state.outputType
+});
 const mapDispatchToProps = (dispatch: Dispatch<State>) => ({
     inputValueChanged: (val: string) => dispatch({ type: 'CHANGE_INPUT_VALUE', payload: val }),
     inputTypeChanged: (ty: string) => dispatch({ type: 'CHANGE_INPUT_TYPE', payload: ty }),
