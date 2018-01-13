@@ -446,11 +446,11 @@ fill-range@^2.1.0:
     repeat-element "^1.1.2"
     repeat-string "^1.5.2"
 
-fit-html@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/fit-html/-/fit-html-0.2.0.tgz#338099bacd24191d6c25e5b1cac6b27107ce4016"
+fit-html@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/fit-html/-/fit-html-0.4.0.tgz#7566a19e30b6da1802c3616e25008f57c3ef473c"
   dependencies:
-    lit-html "^0.7.1"
+    lit-html "^0.8.0"
     lodash-es "^4.17.4"
     redux "^3.7.2"
 
@@ -624,9 +624,9 @@ kind-of@^4.0.0:
   dependencies:
     is-buffer "^1.1.5"
 
-lit-html@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.7.1.tgz#61785045cf84f9ee955fa078c2985b52b765ad16"
+lit-html@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.8.0.tgz#4de0d1899585a3685870ffb919fedd61ebc79f03"
 
 lodash-es@^4.17.4, lodash-es@^4.2.1:
   version "4.17.4"

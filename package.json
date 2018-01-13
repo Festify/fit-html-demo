@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^1.0.17",
-    "fit-html": "^0.2.0",
-    "lit-html": "^0.7.1",
+    "fit-html": "^0.4.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
