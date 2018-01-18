@@ -1,5 +1,5 @@
 import { connect, withExtended } from 'fit-html';
-import { html } from 'lit-html/lib/lit-extended';
+import { html } from 'lit-html';
 import { Dispatch } from 'redux';
 
 import { conversion, State, ValueTypes } from './reducer';
@@ -34,13 +34,13 @@ const renderer = (props: ViewProps) => html`
             flex-flow: column nowrap;
             align-items: center;
             justify-content: center;
-            
+
             width: 100%;
             height: 100%;
         }
     </style>
 
-    <input type="number" 
+    <input type="number"
            on-change=${(ev: Event) => props.inputValueChanged((ev.target as HTMLInputElement).value)}
            value=${props.inputValue}>
     <select on-change=${(ev: Event) => props.inputTypeChanged((ev.target as HTMLSelectElement).value as ValueTypes)}
@@ -49,7 +49,7 @@ const renderer = (props: ViewProps) => html`
         <option value="m">m</option>
         <option value="km">km</option>
     </select>
-    
+
     <select on-change=${(ev: Event) => props.outputTypeChanged((ev.target as HTMLSelectElement).value as ValueTypes)}
             value=${props.outputType}>
         <option value="cm">cm</option>

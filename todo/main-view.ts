@@ -1,5 +1,5 @@
-import { connect } from 'fit-html';
-import withExtended, { html } from 'fit-html/dist/with-extended';
+import { connect, withExtended } from 'fit-html';
+import { html } from 'lit-html';
 import { Dispatch } from 'redux';
 
 import { changeImportance, changeInputText, createTodo } from './actions';
@@ -35,28 +35,28 @@ const renderer = (props: MainViewProps) => html`
             flex-flow: column nowrap;
             align-items: center;
             justify-content: center;
-            
+
             width: 100%;
             height: 100%;
         }
-        
+
         header {
             display: flex;
             flex-flow: row nowrap;
             padding: 24px;
         }
-        
+
         select {
             margin: 0 16px;
         }
-        
+
         ul {
             margin: 16px;
         }
     </style>
-    
+
     <header>
-        <input type="text" 
+        <input type="text"
                on-change="${(ev: Event) => props.inputTextChanged((ev.target as HTMLInputElement).value)}"
                value="${props.inputText}">
         <select on-change="${(ev: Event) => props.importanceChanged((ev.target as HTMLSelectElement).value)}"
@@ -69,9 +69,9 @@ const renderer = (props: MainViewProps) => html`
             Create
         </button>
     </header>
-    
+
     <hr/>
-    
+
     <ul class="remaining-todos">
         ${props.remainingTodos.map(td => html`<li><todo-view todo-id$=${td.id}></todo-view></li>`)}
     </ul>
