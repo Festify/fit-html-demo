@@ -1,5 +1,6 @@
-import { connect, withExtended } from 'fit-html';
-import { html } from 'lit-html';
+import { connect } from 'fit-html';
+import { TemplateResult } from 'lit-html';
+import { html } from 'lit-html/lib/lit-extended';
 import { Dispatch } from 'redux';
 
 import { changeImportance, changeInputText, createTodo } from './actions';
@@ -80,10 +81,10 @@ const renderer = (props: MainViewProps) => html`
     </ul>
 `;
 
-const MainView = withExtended(connect(
+const MainView = connect(
     mapStateToProps,
     mapDispatchToProps,
-    renderer
-));
+    renderer,
+);
 
 customElements.define('main-view', MainView);

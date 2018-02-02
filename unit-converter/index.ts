@@ -1,5 +1,5 @@
-import { connect, withExtended } from 'fit-html';
-import { html } from 'lit-html';
+import { connect } from 'fit-html';
+import { html } from 'lit-html/lib/lit-extended';
 import { Dispatch } from 'redux';
 
 import { conversion, State, ValueTypes } from './reducer';
@@ -41,28 +41,28 @@ const renderer = (props: ViewProps) => html`
     </style>
 
     <input type="number"
-           on-change=${(ev: Event) => props.inputValueChanged((ev.target as HTMLInputElement).value)}
-           value=${props.inputValue}>
-    <select on-change=${(ev: Event) => props.inputTypeChanged((ev.target as HTMLSelectElement).value as ValueTypes)}
-            value=${props.inputType}>
+           on-change="${(ev: Event) => props.inputValueChanged((ev.target as HTMLInputElement).value)}"
+           value="${props.inputValue}">
+    <select on-change="${(ev: Event) => props.inputTypeChanged((ev.target as HTMLSelectElement).value as ValueTypes)}"
+            value="${props.inputType}">
         <option value="cm">cm</option>
         <option value="m">m</option>
         <option value="km">km</option>
     </select>
 
-    <select on-change=${(ev: Event) => props.outputTypeChanged((ev.target as HTMLSelectElement).value as ValueTypes)}
-            value=${props.outputType}>
+    <select on-change="${(ev: Event) => props.outputTypeChanged((ev.target as HTMLSelectElement).value as ValueTypes)}"
+            value="${props.outputType}">
         <option value="cm">cm</option>
         <option value="m">m</option>
         <option value="km">km</option>
     </select>
-    <input type="number" value=${props.outputValue}>
+    <input type="number" value="${props.outputValue}">
 `;
 
 const View = connect(
     mapStateToProps,
     mapDispatchToProps,
-    renderer
+    renderer,
 );
 
-customElements.define('main-view', withExtended(View));
+customElements.define('main-view', View);

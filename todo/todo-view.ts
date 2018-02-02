@@ -1,5 +1,5 @@
-import { connect, withExtended, withProps } from 'fit-html';
-import { html } from 'lit-html';
+import { connect, withProps } from 'fit-html';
+import { html } from 'lit-html/lib/lit-extended';
 import { Dispatch } from 'redux';
 
 import { completeTodo, removeTodo } from './actions';
@@ -55,11 +55,11 @@ const renderer = (props: TodoViewProps & TodoViewDispatch) => html`
     <button on-click="${() => props.removeTodo()}">Discard</button>
 `;
 
-const Todo = withProps(withExtended(connect(
+const Todo = withProps(connect(
     mapStateToProps,
     mapDispatchToProps,
-    renderer
-)), {
+    renderer,
+), {
     todoid: String
 });
 
