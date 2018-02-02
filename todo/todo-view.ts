@@ -15,7 +15,7 @@ interface TodoViewDispatch {
 }
 
 interface OwnProps {
-    todoId: string;
+    todoid: string;
 }
 
 function getIcon(importance: Importance): string {
@@ -31,15 +31,15 @@ function getIcon(importance: Importance): string {
 }
 
 const mapStateToProps = (state: State, ownProps: OwnProps): TodoViewProps => {
-    const todo = state.todos.find(td => td.id === ownProps.todoId);
+    const todo = state.todos.find(td => td.id === ownProps.todoid);
     return {
         severityIcon: getIcon((todo || { importance: Importance.Normal }).importance),
         todo: todo
     };
 };
 const mapDispatchToProps = (dispatch: Dispatch<State>, ownProps: OwnProps): TodoViewDispatch => ({
-    completeTodo: () => dispatch(completeTodo(ownProps.todoId)),
-    removeTodo: () => dispatch(removeTodo(ownProps.todoId))
+    completeTodo: () => dispatch(completeTodo(ownProps.todoid)),
+    removeTodo: () => dispatch(removeTodo(ownProps.todoid))
 });
 const renderer = (props: TodoViewProps & TodoViewDispatch) => html`
     <style>
@@ -60,7 +60,7 @@ const Todo = withProps(withExtended(connect(
     mapDispatchToProps,
     renderer
 )), {
-    todoId: String
+    todoid: String
 });
 
 customElements.define('todo-view', Todo);

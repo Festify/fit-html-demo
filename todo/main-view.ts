@@ -73,10 +73,10 @@ const renderer = (props: MainViewProps) => html`
     <hr/>
 
     <ul class="remaining-todos">
-        ${props.remainingTodos.map(td => html`<li><todo-view todo-id$=${td.id}></todo-view></li>`)}
+        ${props.remainingTodos.map(td => html`<li><todo-view todoid=${td.id}></todo-view></li>`)}
     </ul>
     <ul class="finished-todos">
-        ${props.finishedTodos.map(td => html`<li><todo-view todo-id$=${td.id}></todo-view></li>`)}
+        ${props.finishedTodos.map(td => html`<li><todo-view todoid=${td.id}></todo-view></li>`)}
     </ul>
 `;
 
