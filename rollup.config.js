@@ -10,7 +10,8 @@ function createConfig(folder) {
         input: `./${folder}/index.ts`,
         output: {
             file: `dist/${folder}/index.js`,
-            format: 'iife'
+            format: 'iife',
+            sourcemap: true,
         },
         plugins: [
             nodeGlobals(),
